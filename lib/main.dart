@@ -7,14 +7,10 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('RandomPasswords'),
-        ),
-        body:
+      home:
         PasswordGenerator(), // Should be PasswordGenerator()
       ),
-    ),
+
   );
 }
 
@@ -56,104 +52,28 @@ class _PasswordGeneratorState extends State<PasswordGenerator> {
         appBar: AppBar(
           title: Text('Random Passwords'),
           backgroundColor: Colors.blue,
+          centerTitle: true,
         ),
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+        body: Center(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('$word1 $word2 $word3',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
+                SizedBox(height: 20,),
+                FlatButton(
+                  color: Colors.blue,
+                  child:
+                  Text('New Password'),
 
-              FlatButton(
-                color: Colors.blue,
-                child:
-                Text('New Password'),
-
-                onPressed:
-                generatePassword,
+                  onPressed:
+                  generatePassword,
 
 
-              ),
-              Text('$word1 $word2 $word3')
-            ]
+                )
+
+              ]
+          ),
         ));
   }
 
 }
-/*
-import 'package:flutter/material.dart';
-import 'dart:math';
-
-void main() {
-  runApp(
-    MaterialApp(
-      home: DicePage(),
-    ),
-  );
-}
-
-class DicePage extends StatefulWidget {
-  @override
-  _DicePageState createState() => _DicePageState();
-}
-
-class _DicePageState extends State<DicePage> {
-  int leftDiceNumber = 1;
-  int rightDiceNumber = 3;
-  Random rand = new Random();
-
-  void modifyLeftDiceNumber() {
-    print('Left Dice clicked');
-    setState(() {
-      leftDiceNumber = rand.nextInt(6) + 1;
-      rightDiceNumber = rand.nextInt(6) + 1;
-    });
-  }
-
-  void modifyRightDiceNumber() {
-    print('Right Dice clicked');
-    setState(() {
-      leftDiceNumber = rand.nextInt(6) + 1;
-      rightDiceNumber = rand.nextInt(6) + 1;
-    });
-  }
-
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.red,
-        appBar: AppBar(
-          title: Text('Roll the Dice'),
-          backgroundColor: Colors.red,
-        ),
-        body: Row(
-          //crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-              child: FlatButton(
-                child: Image(
-                  image: AssetImage('assets/dice$leftDiceNumber.png'),
-
-                ),
-                onPressed:
-                modifyLeftDiceNumber,
-
-              ),
-
-            ),
-            Expanded(
-              child: FlatButton(
-                child: Image(
-                  image: AssetImage('assets/dice$rightDiceNumber.png'),
-
-                ),
-                onPressed: modifyRightDiceNumber,
-              ),
-            ),
-          ],
-        )
-
-    );
-  }
-}
-
-*/
